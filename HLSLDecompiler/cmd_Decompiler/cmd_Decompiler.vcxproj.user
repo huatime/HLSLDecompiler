@@ -4,4 +4,9 @@
     <LocalDebuggerCommandArguments>-D "C:\Users\etnlGD\Desktop\ac4_ocean.dxbc"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LocalDebuggerCommandArguments>-D -v "aaa.dxbc"</LocalDebuggerCommandArguments>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <RemoteDebuggerCommandArguments>-D -v "aaa"</RemoteDebuggerCommandArguments>
+  </PropertyGroup>
 </Project>
