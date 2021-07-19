@@ -1,0 +1,35 @@
+Shader hash bb11c100-ebf00cfb-f093a26a-b87bbcd0
+
+ps_5_0
+      dcl_globalFlags refactoringAllowed
+      dcl_constantbuffer cb0[9], immediateIndexed
+      dcl_sampler s0, mode_default
+      dcl_sampler s1, mode_default
+      dcl_resource_texture2d (float,float,float,float) t0
+      dcl_resource_texture2d (float,float,float,float) t1
+      dcl_input_ps linear v1.xy
+      dcl_input_ps linear v2.xyzw
+      dcl_input_ps linear v3.xyzw
+      dcl_output o0.xyzw
+      dcl_output o1.xyzw
+      dcl_output oDepth
+      dcl_temps 3
+   0: add r0.xyzw, v1.xxyy, v2.zxyw
+   1: mov r1.yz, r0.xxwx
+   2: gather4(texture2d)(float,float,float,float) r2.xyzw, v1.xyxx, t1.wxyz, s0.x
+   3: lt r0.w, r2.z, r2.y
+   4: mov r1.x, r2.z
+   5: mov r0.x, r2.y
+   6: movc r0.xyz, r0.wwww, r1.xyzx, r0.xyzx
+   7: lt r0.w, r2.w, r0.x
+   8: add r1.xyzw, v1.xxyy, v3.zxyw
+   9: mov r2.yz, r1.xxwx
+  10: mov r1.x, r2.w
+  11: movc r0.xyz, r0.wwww, r1.xyzx, r0.xyzx
+  12: lt r0.w, r2.x, r0.x
+  13: movc r0.xyz, r0.wwww, r2.xyzx, r0.xyzx
+  14: mad r0.w, cb0[8].x, r0.x, cb0[8].y
+  15: div o0.xyzw, l(1.0000, 1.0000, 1.0000, 1.0000), r0.wwww
+  16: sample_indexable(texture2d)(float,float,float,float) o1.xyzw, r0.yzyy, t0.xyzw, s1
+  17: mov oDepth, r0.x
+  18: ret
