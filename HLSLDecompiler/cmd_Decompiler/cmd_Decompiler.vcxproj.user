@@ -3,10 +3,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerCommandArguments>-D "C:\Users\etnlGD\Desktop\ac4_ocean.dxbc"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <RemoteDebuggerCommandArguments>-D "C:\Users\etnlGD\Desktop\ac4_ocean.dxbc"</RemoteDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerCommandArguments>-D -v "aaa.dxbc"</LocalDebuggerCommandArguments>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <RemoteDebuggerCommandArguments>-D -v "aaa"</RemoteDebuggerCommandArguments>
+    <RemoteDebuggerCommandArguments>-D -v "aaa.dxbc"</RemoteDebuggerCommandArguments>
   </PropertyGroup>
 </Project>
