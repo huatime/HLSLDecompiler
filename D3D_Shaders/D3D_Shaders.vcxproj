@@ -72,6 +72,7 @@
     <IncludePath>$(SolutionDir);$(SolutionDir)BinaryDecompiler;$(SolutionDir)BinaryDecompiler\include;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
     <LibraryPath>$(OutDir);$(LibraryPath)</LibraryPath>
     <TargetExt>.lib</TargetExt>
+    <OutDir>$(SolutionDir)\x32\$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>

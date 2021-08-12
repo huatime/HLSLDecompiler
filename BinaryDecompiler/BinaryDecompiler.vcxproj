@@ -97,7 +97,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)include;$(VC_IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)x32\$(Configuration)\</OutDir>
+    <OutDir>$(SolutionDir)\x32\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)x32\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

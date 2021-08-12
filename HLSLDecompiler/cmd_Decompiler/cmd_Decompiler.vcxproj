@@ -30,7 +30,7 @@
     <ProjectGuid>{25E1F732-DCF5-428E-928D-D39C499CC95F}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>cmd_Decompiler</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.18362.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -98,7 +98,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <IncludePath>$(SolutionDir)crc32c-hw-1.0.5\include;$(SolutionDir)BinaryDecompiler;$(SolutionDir)BinaryDecompiler\include;$(VC_IncludePath);C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\shared;C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um</IncludePath>
-    <LibraryPath>C:\Program Files (x86)\Windows Kits\10\Lib\10.0.17763.0\um\x86;$(VC_LibraryPath_x86);D:\works\HLSLDecompiler\Debug</LibraryPath>
+    <LibraryPath>$(WindowsSDK_LibraryPath_x86);$(VC_LibraryPath_x86);$(SolutionDir)\x32\$(Configuration)\</LibraryPath>
     <OutDir>$(SolutionDir)\x32\$(Configuration)\</OutDir>
     <IntDir>$(ProjectDir)\x32\$(Configuration)\</IntDir>
   </PropertyGroup>
