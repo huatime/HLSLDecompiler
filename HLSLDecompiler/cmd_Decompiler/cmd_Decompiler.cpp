@@ -85,6 +85,7 @@ static void PrintVersion()
 static struct {
 	std::vector<std::string> files;
 	bool decompile;
+	bool decompile2;
 	bool compile;
 	bool disassemble_ms;
 	bool disassemble_flugan;
@@ -128,6 +129,10 @@ void parse_args(int argc, char *argv[])
 			}
 			if (!strcmp(arg, "-D") || !strcmp(arg, "--decompile")) {
 				args.decompile = true;
+				continue;
+			}
+			if (!strcmp(arg, "-E") || !strcmp(arg, "--decompile-string")) {
+				args.decompile2 = true;
 				continue;
 			}
 			// if (!strcmp(arg, "-C") || !strcmp(arg, "--compile")) {
@@ -191,7 +196,7 @@ void parse_args(int argc, char *argv[])
 		args.files.push_back(arg);
 	}
 
-	if (args.decompile + args.compile
+	if (args.decompile + args.decompile2 + args.compile
 			+ args.disassemble_ms
 			+ args.disassemble_flugan
 			+ args.disassemble_hexdump
@@ -596,6 +601,35 @@ static int process(string const *filename)
 	if (args.decompile) {
 		LogInfo("Decompiling %s...\n", filename->c_str());
 		hret = Decompile(srcData.data(), srcData.size(), &output, &model);
+		if (FAILED(hret))
+			return EXIT_FAILURE;
+
+		if (args.validate) {
+			if (validate_hlsl(&output, &model))
+				return EXIT_FAILURE;
+		}
+
+		if (WriteOutput(filename, ".hlsl", &output))
+			return EXIT_FAILURE;
+
+	}
+
+	if (args.decompile2) {
+		LogInfo("Decompiling %s...\n", filename->c_str());
+		vector<byte> new_bytecode;
+		if (args.reflection_reference.empty()) {
+			hret = AssembleFluganWithSignatureParsing(&srcData, &new_bytecode);
+			if (FAILED(hret))
+				return EXIT_FAILURE;
+		}
+		else {
+			vector<byte> refData;
+			if (ReadInput(&refData, &args.reflection_reference))
+				return EXIT_FAILURE;
+			new_bytecode = AssembleFluganWithOptionalSignatureParsing(&srcData, false, &refData);
+		}
+
+		hret = Decompile(new_bytecode.data(), new_bytecode.size(), &output, &model);
 		if (FAILED(hret))
 			return EXIT_FAILURE;
 
