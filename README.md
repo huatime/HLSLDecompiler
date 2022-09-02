@@ -16,3 +16,7 @@ Translate dxbc to hlsl source code. You can use it alone, or as a renderdoc shad
 
 3. Renderdoc -> Pipeline State View -> Choose Any Shader Stage -> Edit -> Decompile with ${Name}
 4. Modify shader as you wish, and click Refresh button to see the change
+
+5.直接使用方法:
+cmd_Decompiler.exe -D DXBC二进制文件
+cmd_Decompiler.exe -E DXBC文本文件
