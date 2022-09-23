@@ -19,4 +19,5 @@ Translate dxbc to hlsl source code. You can use it alone, or as a renderdoc shad
 
 5.直接使用方法:
 cmd_Decompiler.exe -D DXBC二进制文件
+
 cmd_Decompiler.exe -E DXBC文本文件
